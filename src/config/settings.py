@@ -178,7 +178,7 @@ SETTING_DEFINITIONS: Dict[str, SettingDefinition] = {
     # OpenAI 配置
     "openai_client_id": SettingDefinition(
         db_key="openai.client_id",
-        default_value="app_EMoamEEZ73f0CkXaXp7hrann",
+        default_value="app_EMoamEEZ73f0CkXaXp7hrann",  # oaicli 应用
         category=SettingCategory.OPENAI,
         description="OpenAI OAuth 客户端 ID"
     ),
@@ -830,7 +830,7 @@ class Settings(BaseModel):
     log_retention_days: int = 30
 
     # OpenAI 配置
-    openai_client_id: str = "app_EMoamEEZ73f0CkXaXp7hrann"
+    openai_client_id: str = "app_EMoamEEZ73f0CkXaXp7hrann"  # oaicli 应用
     openai_auth_url: str = "https://auth.openai.com/oauth/authorize"
     openai_token_url: str = "https://auth.openai.com/oauth/token"
     openai_redirect_uri: str = "http://localhost:1455/auth/callback"
@@ -947,6 +947,15 @@ def get_settings() -> Settings:
         settings_dict = _load_settings_from_db()
         _settings = Settings(**settings_dict)
     return _settings
+
+
+def reload_settings() -> Settings:
+    """
+    强制重新加载配置（清除缓存）
+    """
+    global _settings
+    _settings = None
+    return get_settings()
 
 
 def update_settings(**kwargs) -> Settings:

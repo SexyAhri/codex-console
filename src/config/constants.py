@@ -127,7 +127,7 @@ APP_DESCRIPTION = "自动注册 OpenAI/Codex CLI 账号的系统"
 # ============================================================================
 
 # OAuth 参数
-OAUTH_CLIENT_ID = "app_EMoamEEZ73f0CkXaXp7hrann"
+OAUTH_CLIENT_ID = "app_EMoamEEZ73f0CkXaXp7hrann"  # oaicli 应用的 client_id
 OAUTH_AUTH_URL = "https://auth.openai.com/oauth/authorize"
 OAUTH_TOKEN_URL = "https://auth.openai.com/oauth/token"
 OAUTH_REDIRECT_URI = "http://localhost:1455/auth/callback"
